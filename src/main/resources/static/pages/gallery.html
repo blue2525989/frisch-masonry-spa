@@ -1,0 +1,38 @@
+<div align="center">
+	<br/>
+	<h2 th:utext="${content}" style="color:#000000;">
+	</h2>
+</div>
+<div class="album">
+      <div class="container">
+
+    
+    <!-- javaScript light box -->
+    <div th:unless="${#lists.isEmpty(imageList)}">
+		
+		<div class="row">
+			<br/>	
+		  <div align="center" class="card col-md-12" th:each="card, idx : ${imageList}"
+		  	style="background-color: #babdb6;color:#000000;">
+		  	<br/><br/>
+		  <a th:href="${card.url}">
+		    <img th:attr='src=${card.url},title=${card.title},alt=${card.alt}'
+		     class="hover-shadow img-rounded img-fluid" 
+		     style="height:50%;width:50%;max-height:400px;max-width:400px;"/>
+		     </a>
+		     
+		     	<br/><br/>
+		        <span class="col-md-8" th:text='${card.description}'></span>
+		  </div>
+		  <br/>
+		</div>		
+
+		<!-- end th:unless -->
+		</div>
+		<!-- if list is empty -->
+		<div th:if="${#lists.isEmpty(imageList)}">
+			<p>There are no images in the gallery currently.</p>
+		</div>
+
+	</div>
+</div>
